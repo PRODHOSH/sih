@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGameOdisha - Gamified Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <header class="landing-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h2>📚 EduGameOdisha</h2>
+                    </div>
+                    <div class="nav-actions gap-8">
+                        <button class="btn btn--outline" onclick="showLogin()">Login</button>
+                        <button class="btn btn--primary" onclick="showLogin()">Get Started</button>
+                        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="landing-main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Transforming Rural Education in Odisha</h1>
+                        <p class="hero-subtitle">Gamified STEM learning platform designed for grades 6-12 students in rural areas. Learn, compete, and excel with interactive lessons, AI support, and offline capabilities.</p>
+                        <div class="hero-actions">
+                            <button class="btn btn--primary btn--lg" onclick="showLogin()">Start Learning</button>
+                            <button class="btn btn--outline btn--lg" onclick="showTeacherLogin()">For Teachers</button>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <h3>45,000+</h3>
+                            <p>Students Learning</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>2,500+</h3>
+                            <p>Teachers</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>500+</h3>
+                            <p>Schools</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <h2>Why Choose EduGameOdisha?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <h3>Gamified Learning</h3>
+                            <p>Earn points, badges, and maintain streaks while learning STEM subjects in an engaging way.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h3>Offline Support</h3>
+                            <p>Access lessons and practice problems even without internet connectivity.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🗣️</div>
+                            <h3>Multilingual</h3>
+                            <p>Content available in Odia, Hindi, and English to support local students.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3>AI Chatbot</h3>
+                            <p>Get instant help and explanations for difficult concepts from our smart assistant.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Progress Tracking</h3>
+                            <p>Detailed analytics for students and teachers to monitor learning progress.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🏆</div>
+                            <h3>Competitions</h3>
+                            <p>Weekly challenges and leaderboards to motivate competitive learning.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="hideLogin()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to EduGameOdisha</h3>
+                <button class="modal-close" onclick="hideLogin()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="role-selection">
+                    <button class="role-btn active" data-role="student" onclick="selectRole('student')">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Student</span>
+                    </button>
+                    <button class="role-btn" data-role="teacher" onclick="selectRole('teacher')">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teacher</span>
+                    </button>
+                </div>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" value="student@demo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" value="demo123" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                </form>
+                <div class="demo-logins">
+                    <p>Quick Demo Access:</p>
+                    <button class="btn btn--secondary btn--sm" onclick="demoLogin('student')">Demo Student</button>
+                    <button class="btn btn--secondary btn--sm" onclick="demoLogin('teacher')">Demo Teacher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="student-dashboard" class="page">
+        <header class="dashboard-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h2>📚 EduGameOdisha</h2>
+                    </div>
+                    <div class="nav-actions flex items-center gap-16">
+                        <div class="user-stats flex items-center gap-16">
+                            <div class="stat">
+                                <span class="stat-label">Points</span>
+                                <span class="stat-value" id="user-points">2450</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Streak</span>
+                                <span class="stat-value" id="user-streak">12🔥</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Level</span>
+                                <span class="stat-value" id="user-level">5</span>
+                            </div>
+                        </div>
+                        <button id="theme-toggle-dashboard" class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="btn btn--outline btn--sm" onclick="logout()">Logout</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="student-name">Aarav Patel</span>! 👋</h1>
+                    <p>Ready to continue your learning journey?</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Progress Overview -->
+                    <section class="card progress-overview">
+                        <div class="card__body">
+                            <h3>Your Progress</h3>
+                            <div class="progress-subjects">
+                                <div class="subject-progress" data-subject="math">
+                                    <div class="subject-info">
+                                        <span class="subject-icon">📊</span>
+                                        <span class="subject-name">Mathematics</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 78%"></div>
+                                    </div>
+                                    <span class="progress-percent">78%</span>
+                                </div>
+                                <div class="subject-progress" data-subject="physics">
+                                    <div class="subject-info">
+                                        <span class="subject-icon">⚡</span>
+                                        <span class="subject-name">Physics</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%"></div>
+                                    </div>
+                                    <span class="progress-percent">65%</span>
+                                </div>
+                                <div class="subject-progress" data-subject="chemistry">
+                                    <div class="subject-info">
+                                        <span class="subject-icon">🧪</span>
+                                        <span class="subject-name">Chemistry</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 82%"></div>
+                                    </div>
+                                    <span class="progress-percent">82%</span>
+                                </div>
+                                <div class="subject-progress" data-subject="biology">
+                                    <div class="subject-info">
+                                        <span class="subject-icon">🌱</span>
+                                        <span class="subject-name">Biology</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 71%"></div>
+                                    </div>
+                                    <span class="progress-percent">71%</span>
+                                </div>
+                                <div class="subject-progress" data-subject="cs">
+                                    <div class="subject-info">
+                                        <span class="subject-icon">💻</span>
+                                        <span class="subject-name">Computer Science</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%"></div>
+                                    </div>
+                                    <span class="progress-percent">45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Subject Navigation -->
+                    <section class="card subjects-nav">
+                        <div class="card__body">
+                            <h3>Choose Subject</h3>
+                            <div class="subjects-grid">
+                                <button class="subject-card" onclick="showSubject('math')">
+                                    <span class="subject-icon">📊</span>
+                                    <h4>Mathematics</h4>
+                                    <p>Grades 6-12</p>
+                                </button>
+                                <button class="subject-card" onclick="showSubject('physics')">
+                                    <span class="subject-icon">⚡</span>
+                                    <h4>Physics</h4>
+                                    <p>Grades 6-12</p>
+                                </button>
+                                <button class="subject-card" onclick="showSubject('chemistry')">
+                                    <span class="subject-icon">🧪</span>
+                                    <h4>Chemistry</h4>
+                                    <p>Grades 6-12</p>
+                                </button>
+                                <button class="subject-card" onclick="showSubject('biology')">
+                                    <span class="subject-icon">🌱</span>
+                                    <h4>Biology</h4>
+                                    <p>Grades 6-12</p>
+                                </button>
+                                <button class="subject-card" onclick="showSubject('cs')">
+                                    <span class="subject-icon">💻</span>
+                                    <h4>Computer Science</h4>
+                                    <p>Grades 6-12</p>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Active Challenges -->
+                    <section class="card challenges">
+                        <div class="card__body">
+                            <h3>Active Challenges</h3>
+                            <div class="challenge-list">
+                                <div class="challenge-item">
+                                    <div class="challenge-info">
+                                        <h4>Weekly Math Challenge</h4>
+                                        <p>Solve 25 algebra problems this week</p>
+                                        <div class="challenge-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 72%"></div>
+                                            </div>
+                                            <span>18/25</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-reward">
+                                        <span class="points">+200 XP</span>
+                                        <span class="time-left">3 days</span>
+                                    </div>
+                                </div>
+                                <div class="challenge-item">
+                                    <div class="challenge-info">
+                                        <h4>Science Explorer</h4>
+                                        <p>Complete lessons in 3 different science subjects</p>
+                                        <div class="challenge-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 67%"></div>
+                                            </div>
+                                            <span>2/3</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-reward">
+                                        <span class="points">+150 XP</span>
+                                        <span class="time-left">5 days</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recent Achievements -->
+                    <section class="card achievements">
+                        <div class="card__body">
+                            <h3>Your Badges</h3>
+                            <div class="badges-list">
+                                <div class="badge-item earned">
+                                    <span class="badge-icon">🎯</span>
+                                    <div class="badge-info">
+                                        <h4>First Steps</h4>
+                                        <p>Complete your first lesson</p>
+                                    </div>
+                                </div>
+                                <div class="badge-item earned">
+                                    <span class="badge-icon">🔥</span>
+                                    <div class="badge-info">
+                                        <h4>Streak Master</h4>
+                                        <p>Maintain a 10-day learning streak</p>
+                                    </div>
+                                </div>
+                                <div class="badge-item">
+                                    <span class="badge-icon">🧮</span>
+                                    <div class="badge-info">
+                                        <h4>Math Wizard</h4>
+                                        <p>Complete 20 math lessons</p>
+                                    </div>
+                                </div>
+                                <div class="badge-item">
+                                    <span class="badge-icon">⭐</span>
+                                    <div class="badge-info">
+                                        <h4>Perfect Score</h4>
+                                        <p>Get 100% on 5 consecutive quizzes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Subject View -->
+    <div id="subject-view" class="page">
+        <header class="dashboard-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="breadcrumb">
+                        <button class="btn btn--outline btn--sm" onclick="showStudentDashboard()">← Dashboard</button>
+                        <span class="breadcrumb-separator">/</span>
+                        <span id="current-subject-name">Mathematics</span>
+                    </div>
+                    <div class="nav-actions flex items-center gap-16">
+                        <button class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="btn btn--outline btn--sm" onclick="logout()">Logout</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="subject-main">
+            <div class="container">
+                <div class="subject-header">
+                    <h1><span id="subject-icon">📊</span> <span id="subject-title">Mathematics</span></h1>
+                    <p>Select your grade level to access lessons and practice problems</p>
+                </div>
+
+                <div class="grades-grid">
+                    <div class="grade-card" onclick="showLessons('8')">
+                        <div class="grade-number">8</div>
+                        <div class="grade-info">
+                            <h3>Grade 8</h3>
+                            <p>Linear equations, quadratic functions, geometry</p>
+                            <div class="grade-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <span>78% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grade-card" onclick="showLessons('9')">
+                        <div class="grade-number">9</div>
+                        <div class="grade-info">
+                            <h3>Grade 9</h3>
+                            <p>Polynomials, coordinate geometry, statistics</p>
+                            <div class="grade-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                                <span>45% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grade-card" onclick="showLessons('10')">
+                        <div class="grade-number">10</div>
+                        <div class="grade-info">
+                            <h3>Grade 10</h3>
+                            <p>Real numbers, trigonometry, probability</p>
+                            <div class="grade-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 12%"></div>
+                                </div>
+                                <span>12% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Lesson View -->
+    <div id="lesson-view" class="page">
+        <header class="lesson-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="breadcrumb">
+                        <button class="btn btn--outline btn--sm" onclick="goBackToSubject()">← Back</button>
+                        <span class="breadcrumb-separator">/</span>
+                        <span id="lesson-subject">Mathematics</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span>Grade 8</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span id="lesson-title">Linear Equations</span>
+                    </div>
+                    <div class="lesson-progress-header">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <span>3/5 Complete</span>
+                        <button class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="lesson-main">
+            <div class="lesson-content">
+                <div class="lesson-problem">
+                    <h2>Solve for x: 2x + 5 = 13</h2>
+                    <p>Let's solve this linear equation step by step. What should be our first step?</p>
+                    
+                    <div class="problem-options">
+                        <button class="option-btn" onclick="selectOption(this, false)">Add 5 to both sides</button>
+                        <button class="option-btn" onclick="selectOption(this, false)">Multiply both sides by 2</button>
+                        <button class="option-btn" onclick="selectOption(this, true)">Subtract 5 from both sides</button>
+                        <button class="option-btn" onclick="selectOption(this, false)">Divide both sides by 2</button>
+                    </div>
+
+                    <div id="feedback" class="feedback hidden">
+                        <div class="feedback-content">
+                            <div class="feedback-icon">✅</div>
+                            <div class="feedback-text">
+                                <h4>Correct!</h4>
+                                <p>Great job! Subtracting 5 from both sides gives us: 2x = 8</p>
+                            </div>
+                            <div class="points-earned">+10 XP</div>
+                        </div>
+                        <button class="btn btn--primary" onclick="nextStep()">Next Step</button>
+                    </div>
+
+                    <div class="lesson-actions">
+                        <button class="btn btn--outline" onclick="showHint()">💡 Hint</button>
+                        <button class="btn btn--secondary" onclick="toggleChatbot()">🤖 Ask AI</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Chatbot Sidebar -->
+            <div id="chatbot-sidebar" class="chatbot-sidebar hidden">
+                <div class="chatbot-header">
+                    <h3>🤖 AI Helper</h3>
+                    <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+                </div>
+                <div class="chatbot-messages" id="chatbot-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            Hi! I'm here to help you with this lesson. What would you like to know about linear equations?
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbot-input">
+                    <input type="text" class="form-control" placeholder="Ask a question..." id="chatbot-input" onkeypress="handleChatInput(event)">
+                    <button class="btn btn--primary btn--sm" onclick="sendChatMessage()">Send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacher-dashboard" class="page">
+        <header class="dashboard-header">
+            <div class="container">
+                <nav class="flex justify-between items-center py-16">
+                    <div class="logo">
+                        <h2>📚 EduGameOdisha - Teacher Portal</h2>
+                    </div>
+                    <div class="nav-actions flex items-center gap-16">
+                        <button id="theme-toggle-teacher" class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="btn btn--outline btn--sm" onclick="logout()">Logout</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="container">
+                <div class="welcome-section">
+                    <h1>Teacher Dashboard</h1>
+                    <p>Monitor student progress and manage your classroom</p>
+                </div>
+
+                <div class="teacher-dashboard-grid">
+                    <!-- Class Overview -->
+                    <section class="card class-overview">
+                        <div class="card__body">
+                            <h3>Class Overview</h3>
+                            <div class="overview-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">45</div>
+                                    <div class="stat-label">Total Students</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">38</div>
+                                    <div class="stat-label">Active Today</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">78%</div>
+                                    <div class="stat-label">Avg Engagement</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">85%</div>
+                                    <div class="stat-label">Completion Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Subject Performance -->
+                    <section class="card subject-performance">
+                        <div class="card__body">
+                            <h3>Subject Performance</h3>
+                            <div class="performance-list">
+                                <div class="performance-item">
+                                    <span class="subject">Mathematics</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 76%"></div>
+                                    </div>
+                                    <span class="performance-score">76%</span>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject">Chemistry</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 79%"></div>
+                                    </div>
+                                    <span class="performance-score">79%</span>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject">Biology</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 74%"></div>
+                                    </div>
+                                    <span class="performance-score">74%</span>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject">Physics</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 71%"></div>
+                                    </div>
+                                    <span class="performance-score">71%</span>
+                                </div>
+                                <div class="performance-item">
+                                    <span class="subject">Computer Science</span>
+                                    <div class="performance-bar">
+                                        <div class="performance-fill" style="width: 68%"></div>
+                                    </div>
+                                    <span class="performance-score">68%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Top Performers -->
+                    <section class="card top-performers">
+                        <div class="card__body">
+                            <h3>Top Performers</h3>
+                            <div class="student-list">
+                                <div class="student-item">
+                                    <div class="student-rank">1</div>
+                                    <div class="student-info">
+                                        <h4>Priya Sharma</h4>
+                                        <p>Grade 10 • 3200 points</p>
+                                    </div>
+                                    <div class="student-badge">🏆</div>
+                                </div>
+                                <div class="student-item">
+                                    <div class="student-rank">2</div>
+                                    <div class="student-info">
+                                        <h4>Sneha Mishra</h4>
+                                        <p>Grade 11 • 4100 points</p>
+                                    </div>
+                                    <div class="student-badge">🥈</div>
+                                </div>
+                                <div class="student-item">
+                                    <div class="student-rank">3</div>
+                                    <div class="student-info">
+                                        <h4>Aarav Patel</h4>
+                                        <p>Grade 8 • 2450 points</p>
+                                    </div>
+                                    <div class="student-badge">🥉</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- At-Risk Students -->
+                    <section class="card at-risk-students">
+                        <div class="card__body">
+                            <h3>Students Needing Attention</h3>
+                            <div class="at-risk-list">
+                                <div class="at-risk-item">
+                                    <div class="student-info">
+                                        <h4>Ravi Kumar</h4>
+                                        <p>Grade 9 • Last active: 3 days ago</p>
+                                    </div>
+                                    <div class="risk-indicators">
+                                        <span class="status status--warning">Low Engagement</span>
+                                        <button class="btn btn--outline btn--sm">Contact</button>
+                                    </div>
+                                </div>
+                                <div class="at-risk-item">
+                                    <div class="student-info">
+                                        <h4>Ankit Singh</h4>
+                                        <p>Grade 7 • Struggling with Math</p>
+                                    </div>
+                                    <div class="risk-indicators">
+                                        <span class="status status--error">Below Average</span>
+                                        <button class="btn btn--outline btn--sm">Contact</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Actions -->
+                    <section class="card quick-actions">
+                        <div class="card__body">
+                            <h3>Quick Actions</h3>
+                            <div class="actions-grid">
+                                <button class="action-btn" onclick="createAssignment()">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Create Assignment</span>
+                                </button>
+                                <button class="action-btn" onclick="sendAnnouncement()">
+                                    <i class="fas fa-bullhorn"></i>
+                                    <span>Send Announcement</span>
+                                </button>
+                                <button class="action-btn" onclick="generateReport()">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Generate Report</span>
+                                </button>
+                                <button class="action-btn" onclick="viewAllStudents()">
+                                    <i class="fas fa-users"></i>
+                                    <span>View All Students</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
