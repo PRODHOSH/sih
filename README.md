@@ -8,15 +8,35 @@
 
 ### 🚀 *"I love math so much that I chose Data Science just to live in numbers!"* 😅
 
-<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="500" height="300">
+<img src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif" width="500" height="300">
+
+</div>
+
+---
+
+## 🌐 **Explore My Digital World** 🌐
+
+<div align="center">
+
+<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="400" height="200">
+
+### **✨ Visit My Portfolio Website ✨**
+
+<a href="https://prodhosh.github.io/portfolio/" target="_blank">
+  <img src="https://img.shields.io/badge/🌟_Visit_My_Portfolio-FF6B9D?style=for-the-badge&logo=firefox&logoColor=white&labelColor=000000&color=C147E9" alt="Portfolio Website" height="60"/>
+</a>
+
+<br><br>
+
+<img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=20&pause=1000&color=FF6B9D&center=true&vCenter=true&width=600&lines=🚀+Discover+My+Projects+%26+Journey;💻+Interactive+Experience+Awaits;🎯+Full+Portfolio+%7C+Projects+%7C+Blog;✨+Click+Above+to+Explore!" />
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 </div>
 
 ---
 
 ## 🌟 **About Me** 🌟
-
-<img align="right" alt="Coding" width="400" src="https://media.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.gif">
 
 ```python
 class DataScientist:
@@ -26,9 +46,11 @@ class DataScientist:
         self.language_spoken = ["Python", "C++", "JavaScript", "SQL"]
         self.current_focus = "Machine Learning & Statistics"
         self.fun_fact = "Living in numbers, dreaming in algorithms"
+        self.portfolio = "https://prodhosh.github.io/portfolio/"
     
     def say_hi(self):
         print("Thanks for dropping by! Let's build something amazing together!")
+        print(f"Check out my full journey at: {self.portfolio}")
 
 me = DataScientist()
 me.say_hi()
@@ -99,6 +121,8 @@ me.say_hi()
 ## 💻 **Tech Arsenal** 💻
 
 <div align="center">
+
+<img src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif" width="400" height="250">
 
 ### **Programming Languages**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=000000)
@@ -178,8 +202,15 @@ me.say_hi()
 
 <div align="center">
 
+<img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="400" height="300">
+
 <table>
   <tr>
+    <td align="center">
+      <a href="https://prodhosh.github.io/portfolio/" target="_blank">
+        <img src="https://img.shields.io/badge/Portfolio-FF6B9D?style=for-the-badge&logo=firefox&logoColor=white&labelColor=000000" alt="Portfolio" />
+      </a>
+    </td>
     <td align="center">
       <a href="https://linkedin.com/in/prodhoshvs">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=000000" alt="LinkedIn" />
@@ -225,46 +256,6 @@ me.say_hi()
 
 ---
 
-## 🎯 **Current Goals & Milestones** 🎯
-
-<div align="center">
-
-```mermaid
-mindmap
-  root((PRODHOSH))
-    Learning Goals
-      Machine Learning Mastery
-        Deep Learning
-        Neural Networks
-        Computer Vision
-      Data Science Excellence  
-        Advanced Statistics
-        Big Data Analytics
-        MLOps
-    Career Objectives
-      Open Source Contribution
-        Python Libraries
-        ML Tools
-        Educational Resources
-      Industry Experience
-        Internships
-        Real Projects
-        Mentorship
-    Personal Development
-      Technical Writing
-        Blog Posts
-        Tutorials
-        Documentation
-      Community Building
-        Study Groups
-        Workshops
-        Networking
-```
-
-</div>
-
----
-
 ## 🚀 **Featured Projects** 🚀
 
 <div align="center">
@@ -303,32 +294,6 @@ mindmap
 
 ---
 
-## 📈 **Learning Journey** 📈
-
-<div align="center">
-
-```mermaid
-gantt
-    title My Data Science Learning Roadmap
-    dateFormat  YYYY-MM-DD
-    section Foundations
-    Python Basics           :done,    des1, 2024-01-01,2024-02-15
-    Statistics & Math       :done,    des2, 2024-02-01,2024-03-15
-    Data Structures         :done,    des3, 2024-02-15,2024-03-30
-    section Data Science
-    Pandas & NumPy         :done,    des4, 2024-03-01,2024-04-15
-    Data Visualization     :active,  des5, 2024-04-01,2024-05-15
-    Machine Learning       :active,  des6, 2024-05-01,2024-07-01
-    section Advanced
-    Deep Learning          :         des7, 2024-07-01,2024-09-01
-    MLOps                  :         des8, 2024-08-01,2024-10-01
-    Specialization         :         des9, 2024-09-01,2024-12-01
-```
-
-</div>
-
----
-
 ## 🎉 **Fun Facts & Easter Eggs** 🎉
 
 <div align="center">
@@ -337,7 +302,7 @@ gantt
 <summary><b>🎭 Click for some fun facts about me!</b></summary>
 <br>
 
-- 🧮 **Math Lover**: I genuinely find beauty in mathematical equations
+- 🧮 **Math Lover**: I genuinely love solving mathematical equations
 - 📊 **Data Storyteller**: Every dataset has a story waiting to be discovered  
 - 🌙 **Night Owl**: My best coding happens between 10 PM and 2 AM
 - ☕ **Coffee Addict**: Fueled by coffee and curiosity
@@ -360,15 +325,15 @@ gantt
 
 ---
 
-## 🌟 **Visitor Count & Final Touch** 🌟
+## 🌟 **Final Touch** 🌟
 
 <div align="center">
-
-<img src="https://visitcount.itsvg.in/api?id=PRODHOSH&icon=9&color=10" alt="Visitor Count" />
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 ### **💫 "In the world of data, every number tells a story, and I'm here to listen." 💫**
+
+<img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="400" height="300">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=twinkling" />
 
